@@ -1,0 +1,21 @@
+/** WRITE YOUR TIPS IN THIS FILE **/
+
+1. We can prune states which have no solutions to improve the running time.
+If a box is in a corner, robots cannot push the box and therefore end up finding no solution.
+We can prune these states. A 'corner' can be a situation where more than 2 sides of a
+box is surrounded by either a wall, or an obstacle.
+
+2. Also, this verification should be enforced at the very
+first part of the heuristic function, rather than placing it in the middle or in the end, since
+it isn't worth to loop over storages, boxes and robots for a no-solution-state.
+
+3. The heur_manhatten_distance(heuristic function) can be improved by also considering
+the distance from the robot to the boxes. Since the boxes cannot move itself, the distance
+between a box from its closest robot should also be considered on top of the distance between
+a box from its closest storage.
+
+4. The alternate heuristic can also be designed by considering the states if more than one box have the same
+location of closest storage. Since one storage can only hold one box, in this case, the actual number of actions to be taken to get to the goal state
+would be larger than the sum of the distances between each boxes and its closest storage.
+Other boxes should be stored in a further storage. Therefore in this case, we can increase the heuristic value
+to indicate that these are further from goal states than states in which all boxes are stored in the closest and different storages.
